@@ -1,0 +1,359 @@
+:root {
+    --bg-color: #0f172a;
+    --text-color: #e2e8f0;
+    --accent-color: #8b5cf6;
+    --secondary-accent: #ec4899;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --font-main: 'Outfit', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
+    min-height: 100vh;
+}
+
+/* Utilities */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    line-height: 1.8;
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+.important_msg,
+.important,
+.imp_msg_date,
+.anger_msg {
+    background: pink;
+    color: black;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+/* Animations */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Card Slider Buttons */
+.nav-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Index Page Specifics */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .content-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .text-content {
+        width: 40%;
+    }
+
+    .gallery {
+        width: 50%;
+    }
+}
+
+.text-content {
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 0.8rem;
+    backdrop-filter: blur(4px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    opacity: 0.7;
+    animation: float 2s infinite;
+}
+
+.scroll-indicator .arrow {
+    font-size: 2rem;
+}
+
+/* Login Section */
+.login-card {
+    padding: 3rem;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+.input-group {
+    margin-top: 2rem;
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: rgba(15, 23, 42, 0.6);
+    color: white;
+    font-family: var(--font-main);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+button#submit-btn {
+    padding: 0 1.5rem;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent-color);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button#submit-btn:hover {
+    background: var(--secondary-accent);
+}
+
+.error-msg {
+    color: #ef4444;
+    margin-top: 1rem;
+    min-height: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Cards Page Specifics */
+.slider-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.card {
+    min-width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    padding: 2rem 2rem 6rem;
+    position: relative;
+    /* justify-content and align-items removed to allow scrolling */
+}
+
+.card-content {
+    margin: auto;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.card-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    /* or cover depending on user pref */
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+    position: absolute;
+    bottom: 2rem;
+    /* or top 50% */
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 100;
+}
+
+/* Alternate controls position */
+.controls.centered {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 2rem;
+    pointer-events: none;
+    background: transparent;
+    bottom: auto;
+    right: auto;
+}
+
+.controls.centered .nav-btn {
+    pointer-events: auto;
+}
+
+/* Shake Animation for Error */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+}

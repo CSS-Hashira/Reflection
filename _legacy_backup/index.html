@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A personal reflection web app to express gratitude and love to the special people in my life">
+    <title>2024 Reflections | A Year of Gratitude</title>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('YOUR_PUBLIC_KEY');
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- HEADER SECTION -->
+            <div class="header">
+                <span class="year-badge">2024</span>
+                <h1>Reflections of Gratitude</h1>
+                <p class="subtitle">To the ones who made this year unforgettable</p>
+            </div>
+
+            <!-- NAME INPUT SCREEN -->
+            <div id="nameInputSection">
+                <div class="input-section">
+                    <label for="nameInput">Who's reading this?</label>
+                    <input type="text" id="nameInput" placeholder="Enter your name..." autocomplete="off">
+                </div>
+                <button class="btn" onclick="showReflection()">
+                    Reveal Your Message <span class="heart-icon">♥</span>
+                </button>
+            </div>
+
+            <!-- PASSWORD INPUT SCREEN (Initially Hidden) -->
+            <div id="passwordSection" class="hidden">
+                <div class="input-section">
+                    <label for="passwordInput">Secret Password Required 🔒</label>
+                    <input type="password" id="passwordInput" placeholder="Enter the secret phrase..."
+                        autocomplete="off">
+                </div>
+                <button class="btn" onclick="checkPassword()">
+                    Unlock Content <span class="heart-icon">🔓</span>
+                </button>
+                <div id="passwordError" style="color: #ff4444; margin-top: 10px; font-size: 0.9em; display: none;">
+                    Incorrect password. Hint: Who do you love?
+                </div>
+                <button class="btn btn-secondary" onclick="resetApp()">
+                    ← Back
+                </button>
+            </div>
+
+            <!-- REFLECTION MESSAGE SCREEN (Initially Hidden) -->
+            <div id="reflectionSection" class="hidden">
+                <div class="reflection-message">
+                    <div class="greeting" id="greeting"></div>
+
+                    <!-- Single Message Card Display -->
+                    <div id="messageCardDisplay"></div>
+
+                    <!-- Card Counter -->
+                    <div class="card-counter" id="cardCounter"></div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="navigation-buttons">
+                        <button class="btn btn-nav" id="prevBtn" onclick="previousCard()">
+                            ← Previous
+                        </button>
+                        <button class="btn btn-nav" id="nextBtn" onclick="nextCard()">
+                            Next → </button>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary" onclick="resetApp()">
+                    ← Back to Start
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
